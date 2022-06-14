@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components";
+import { themes } from "./colorStyles";
+
+export const GlobalStyle = createGlobalStyle`
 * {
 	box-sizing: border-box;
 }
@@ -34,6 +38,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background: ${({ theme }) => theme.backgroundColor};
+
 }
 ol, ul {
 	list-style: none;
@@ -50,3 +56,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/* Dark/Light Mode */
+body {
+  
+}
+`;
