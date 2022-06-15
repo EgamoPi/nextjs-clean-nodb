@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
 		$(
 			Layout,
 			{ toggleTheme, dark, light, isDarkTheme },
-			$(Component, { ...pageProps })
+			$(Component, { ...pageProps, isDarkTheme })
 		)
 	);
 }

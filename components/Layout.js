@@ -1,39 +1,37 @@
-import { createElement as $, Fragment } from "react";
+import { createElement as $, Fragment, useState, useEffect } from "react";
+import { useAnimation, motion } from "framer-motion";
 import DLM from "./DarkLightMode";
-import { H3 } from "../styles/textStyles";
+import Navbar from "./HamburgerMenu";
+import MenuPage from "./HamburgerMenu/MenuPage";
+import SimpleFooter from "./Footer";
 
-export const Layout = ({ children, toggleTheme, dark, light, isDarkTheme }) => {
+export const Layout = ({ children, toggleTheme, isDarkTheme }) => {
+	// Nav bar state
+	const [isOpen, setIsOpen] = useState(false);
+	const controls = useAnimation();
+
+	useEffect(() => {
+		isOpen
+			? (document.body.style.overflow = "hidden")
+			: (document.body.style.overflow = "visible");
+	}, [isOpen]);
+
 	return $(
 		Fragment,
 		null,
-		$("div", { style: headerStyle }, $(H3, null, "Header")),
+		$(MenuPage, {
+			controls,
+			setIsOpen,
+			isOpen,
+		}),
+		$(Navbar, { setIsOpen, isOpen, isDarkTheme }),
 		$(DLM, {
 			isDarkTheme: isDarkTheme,
 			toggleTheme,
 		}),
 		children,
-		$("div", { style: footerStyle }, $(H3, null, "Footer"))
+		$(SimpleFooter)
 	);
-};
-
-const headerStyle = {
-	height: 80,
-	backgroundColor: "black",
-	color: "white",
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-};
-const footerStyle = {
-	height: 100,
-	backgroundColor: "#010526",
-	color: "white",
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-	//position: "absolute",
-	bottom: 0,
-	width: "100%",
 };
 
 /* 

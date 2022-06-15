@@ -30,6 +30,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	text-decoration: none;
+	scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -58,7 +60,10 @@ table {
 }
 
 /* Dark/Light Mode */
-body {
-  
+a {
+  color: black;
+	:visited{
+		color: black;
+	}
 }
 `;
