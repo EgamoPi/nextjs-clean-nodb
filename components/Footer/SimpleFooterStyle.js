@@ -58,7 +58,7 @@ export const ListItem = styled.li`
 	:hover {
 		transform: scale(1.2);
 		color: yellow;
-		transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+		transition: cubic-bezier(0.165, 0.84, 0.44, 1);
 		cursor: pointer;
 	}
 `;
